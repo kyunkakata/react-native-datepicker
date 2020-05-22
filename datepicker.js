@@ -141,7 +141,7 @@ class DatePicker extends Component {
       return now;
     }
 
-    if (date instanceof Date) {
+    if (Object.prototype.toString.call(date) === '[object Date]') {
       return date;
     }
 
