@@ -15,7 +15,7 @@ import {
 } from 'react-native';
 import Style from './style';
 // import Moment from 'moment';
-import * as Date from './Date';
+import * as DateUtils from './Date';
 
 const FORMATS = {
   'date': 'YYYY-MM-DD',
@@ -145,7 +145,7 @@ class DatePicker extends Component {
       return date;
     }
 
-    return Date.getTimeFromFormatString(date, format);
+    return DateUtils.getTimeFromFormatString(date, format);
     // return Moment(date, format).toDate();
   }
 
@@ -160,7 +160,7 @@ class DatePicker extends Component {
       return this.props.getDateStr(dateInstance);
     }
 
-    return Date.format(dateInstance, format);
+    return DateUtils.format(dateInstance, format);
     // return Moment(dateInstance).format(format);
   }
 
@@ -215,7 +215,7 @@ class DatePicker extends Component {
     if (action !== DatePickerAndroid.dismissedAction) {
       this.setState({
         // date: Moment().hour(hour).minute(minute).toDate()
-        date: Date.get(hour, minute)
+        date: DateUtils.get(hour, minute)
       });
       this.datePicked();
     } else {
@@ -228,7 +228,7 @@ class DatePicker extends Component {
 
     if (action !== DatePickerAndroid.dismissedAction) {
       // let timeMoment = Moment(this.state.date);
-      let timeMoment = Date.getTimeFromFormatString(this.state.date);
+      let timeMoment = DateUtils.getTimeFromFormatString(this.state.date);
 
       TimePickerAndroid.open({
         hour: timeMoment.getHours(),
@@ -282,7 +282,7 @@ class DatePicker extends Component {
         // 选时间
 
         // let timeMoment = Moment(this.state.date);
-        let timeMoment = Date.getTimeFromFormatString(this.state.date);
+        let timeMoment = DateUtils.getTimeFromFormatString(this.state.date);
 
         TimePickerAndroid.open({
           hour: timeMoment.hour(),
