@@ -231,8 +231,8 @@ class DatePicker extends Component {
       let timeMoment = Date.getTimeFromFormatString(this.state.date);
 
       TimePickerAndroid.open({
-        hour: timeMoment.hour(),
-        minute: timeMoment.minutes(),
+        hour: timeMoment.getHours(),
+        minute: timeMoment.getMinutes(),
         is24Hour: is24Hour,
         mode: androidMode
       }).then(this.onDatetimeTimePicked.bind(this, year, month, day));
